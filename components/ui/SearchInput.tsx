@@ -27,7 +27,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
       <button
         onClick={handleSearch}
-        className="bg-yellow rounded-r-full px-6 py-3 text-lg font-semibold text-black"
+        className="bg-yellow cursor-pointer rounded-r-full px-6 py-3 text-lg font-semibold text-black"
       >
         Search jobs
       </button>

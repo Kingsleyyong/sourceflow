@@ -47,9 +47,10 @@ const JobCard: React.FC<Job> = ({
         textColor={"text-light-blue"}
         bgColor={"bg-white"}
         radius={"rounded-4xl"}
-        className="w-full px-4 py-2 text-sm"
-        text="View this job"
-      />
+        className="w-full px-5 py-3 text-sm font-semibold"
+      >
+        View this job
+      </Button>
       <p className="mt-3 text-xs">Posted on {postedDate}</p>
     </div>
   );

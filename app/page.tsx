@@ -4,6 +4,9 @@ import JobCard from "@/components/ui/JobCard";
 import { jobList } from "@/constants/jobLists";
 import { logoList } from "@/constants/logoLists";
 import Image from "next/image";
+import InlineSvg from "@/components/ui/InlineSvg";
+import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -56,6 +59,31 @@ export default function Home() {
             {jobList.map((job) => (
               <JobCard key={job.id} {...job} />
             ))}
+          </div>
+
+          <div className={"flexCenter mt-5 justify-between"}>
+            <div>
+              <Button className="m-2.5" disabled>
+                <InlineSvg
+                  src={"/icons/prev-button.svg"}
+                  className={"text-light-blue"}
+                />
+              </Button>
+
+              <Button className="m-2.5">
+                <InlineSvg
+                  src={"/icons/next-button.svg"}
+                  className={"text-light-blue"}
+                />
+              </Button>
+            </div>
+
+            <Link
+              href={"#"}
+              className="leading-[150%} m-2.5 text-sm font-medium hover:underline"
+            >
+              View more jobs
+            </Link>
           </div>
         </div>
       </section>

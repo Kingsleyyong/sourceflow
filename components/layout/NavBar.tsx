@@ -58,12 +58,13 @@ const NavBar = () => {
               ) : key === NavBarItem.BUTTON ? (
                 <Button
                   key={`${key + 1}. ${item.text}`}
-                  text={item.text}
                   textColor={item.textColor}
                   bgColor={item.bgColor}
                   radius={"rounded-[30px]"}
-                  className={"mx-1"}
-                />
+                  className={"mx-1 px-5 py-3 font-semibold"}
+                >
+                  {item.text}
+                </Button>
               ) : (
                 <></>
               ),

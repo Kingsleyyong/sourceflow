@@ -1,35 +1,39 @@
 import React from "react";
 import clsx from "clsx";
 
-type ButtonProps = {
-  text: string;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
   bgColor?: string;
   textColor?: string;
   radius?: string;
   onClickHandler?: () => void;
   className?: string;
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
-  text,
+  children,
   bgColor = "",
   textColor = "",
   radius = "",
   onClickHandler,
   className = "",
+  disabled,
+  ...props
 }) => {
   return (
     <button
       onClick={onClickHandler}
       className={clsx(
-        "px-5 py-3 font-semibold transition-colors duration-200",
+        className,
         bgColor,
         textColor,
         radius,
-        className,
+        disabled && "cursor-not-allowed opacity-50",
+        !disabled && "cursor-pointer hover:grayscale-50",
       )}
+      {...props}
     >
-      {text}
+      {children}
     </button>
   );
 };
