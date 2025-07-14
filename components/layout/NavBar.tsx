@@ -1,14 +1,16 @@
+import Button from "@/components/ui/Button";
 import { Icons } from "@/constants/imageLists";
 import { NavListItems } from "@/constants/navBarConstant";
 import { NavBarItem, NavBarTypes } from "@/types/navBar";
 import clsx from "clsx";
 import Image from "next/image";
 
-function NavBar() {
+const NavBar = () => {
   const typesGroupingNavListItems = Map.groupBy(
     NavListItems,
     ({ types }) => types,
   );
+
   return (
     <div className={`flex h-24 w-full justify-around py-7`}>
       {[...typesGroupingNavListItems.keys()].map((key) => {
@@ -54,16 +56,14 @@ function NavBar() {
                   />
                 </div>
               ) : key === NavBarItem.BUTTON ? (
-                <button
+                <Button
                   key={`${key + 1}. ${item.text}`}
-                  className={clsx(
-                    "mx-1 rounded-[30px] px-5 py-3",
-                    item.textColor,
-                    item.bgColor,
-                  )}
-                >
-                  {item.text}
-                </button>
+                  text={item.text}
+                  textColor={item.textColor}
+                  bgColor={item.bgColor}
+                  radius={"rounded-[30px]"}
+                  className={"mx-1"}
+                />
               ) : (
                 <></>
               ),
@@ -73,5 +73,5 @@ function NavBar() {
       })}
     </div>
   );
-}
+};
 export default NavBar;
