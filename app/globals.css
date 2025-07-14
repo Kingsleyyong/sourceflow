@@ -6,6 +6,7 @@
   --brown-black: #451b09;
   --dark-blue: #0e2152;
   --light-blue: #064ea4;
+  --lighter-blue: #d7e7fb;
   --yellow: #fcdf69;
   --orange: #f99d76;
   --dark-grey: #aaaaaa;
@@ -18,6 +19,7 @@
   --color-brown-black: var(--brown-black);
   --color-dark-blue: var(--dark-blue);
   --color-light-blue: var(--light-blue);
+  --color-lighter-blue: var(--lighter-blue);
   --color-yellow: var(--yellow);
   --color-orange: var(--orange);
   --color-dark-grey: var(--dark-grey);
@@ -33,6 +35,6 @@ body {
 
 @utility flexCenter {
   display: flex;
-  place-content: center;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

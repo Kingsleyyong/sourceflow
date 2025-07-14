@@ -1,18 +1,18 @@
+"use client";
+
 import React, { useState } from "react";
 
 type SearchInputProps = {
   placeholder?: string;
-  onSearch: (query: string) => void;
 };
 
 const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "E.g. networking",
-  onSearch,
 }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    onSearch(query.trim());
+    console.log(query.trim());
   };
 
   return (
@@ -22,11 +22,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="border-light-grey flex-grow rounded-l-full border border-r-0 px-4 py-3 text-black focus:outline-none"
+        className="text-dark-grey bg-background grow rounded-l-full px-4 py-3 font-extrabold focus:outline-none"
       />
+
       <button
         onClick={handleSearch}
-        className="bg-yellow rounded-r-full px-6 py-3 font-semibold text-black"
+        className="bg-yellow rounded-r-full px-6 py-3 text-lg font-semibold text-black"
       >
         Search jobs
       </button>
