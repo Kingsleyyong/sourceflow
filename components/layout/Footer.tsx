@@ -6,9 +6,9 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="bg-light-blue text-background py-20">
-      <div className="container mx-auto flex flex-row justify-between">
+      <div className="container mx-auto flex flex-col justify-between px-6 md:flex-row">
         {/* Logo + Social */}
-        <div className={"mx-12"}>
+        <div className="mx-12 mb-10 md:mb-0">
           <h3 className="mb-4 text-xl font-bold">Software Recruitment co.</h3>
           <div className="flex gap-4 [&>*]:h-6 [&>*]:w-5">
             <a href="#" aria-label="LinkedIn" className="hover:opacity-80">
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
 
         {/* Link Groups */}
-        <div className="mx-16 grid grow grid-cols-3 text-sm">
+        <div className="mx-16 grid grid-cols-1 gap-10 text-sm sm:grid-cols-2 md:grid-cols-3">
           {footerConst.map((section) => (
             <div key={section.title}>
               <h4 className="mb-3 text-4xl font-semibold">{section.title}</h4>

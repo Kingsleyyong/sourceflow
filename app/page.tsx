@@ -12,18 +12,18 @@ export default function Home() {
     <div className="bg-white text-black">
       {/* Hero Section */}
       <section className="bg-light-blue relative h-[42rem] py-10 text-white">
-        <div className="flexCenter relative z-10 container mx-auto h-full flex-col gap-16 px-7 md:flex-row">
+        <div className="flexCenter relative z-10 container mx-auto h-full flex-col gap-10 px-4 md:flex-row md:gap-16 md:px-7">
           <div>
             <h6 className={"mb-2.5 text-sm font-normal"}>
               Software Recruitment Specialists
             </h6>
-            <h1 className="mb-4 text-6xl leading-[1.5] font-bold">
+            <h1 className="mb-4 text-4xl leading-[1.5] font-bold md:text-4xl xl:text-7xl">
               Elevate your career
             </h1>
             <SearchInput placeholder="E.g. networking" />
           </div>
 
-          <div className={"w-md rounded-4xl"}>
+          <div className={"w-2xs rounded-4xl sm:w-sm md:w-md"}>
             <img src="/images/hero-woman.png" alt="Hero Illustration" />
           </div>
         </div>
@@ -54,14 +54,14 @@ export default function Home() {
       <section className="bg-lighter-blue py-16">
         <div className="container mx-auto px-10">
           <SectionTitle title="Latest Jobs" />
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-10">
             {jobList.map((job) => (
               <JobCard key={job.id} {...job} />
             ))}
           </div>
 
-          <div className={"flexCenter mt-5 justify-between"}>
-            <div>
+          <div className={"flexCenter mt-5 md:justify-between"}>
+            <div className="hidden md:block">
               <Button className="m-2.5" disabled>
                 <InlineSvg
                   src={"/icons/prev-button.svg"}
