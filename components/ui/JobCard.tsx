@@ -1,10 +1,10 @@
 import Button from "@/components/ui/Button";
+import InlineSvg from "@/components/ui/InlineSvg";
 import { Job } from "@/types/job";
 import clsx from "clsx";
 import React from "react";
 
 const JobCard: React.FC<Job> = ({
-  id,
   title,
   location,
   salary,
@@ -17,7 +17,7 @@ const JobCard: React.FC<Job> = ({
   return (
     <div
       className={clsx(
-        "text-light-blue rounded-4xl p-6",
+        "text-light-blue rounded-4xl p-8",
         bgColor || "bg-white",
         textColor,
       )}
@@ -28,8 +28,20 @@ const JobCard: React.FC<Job> = ({
         </span>
       )}
       <h3 className="mb-1 text-lg font-bold">{title}</h3>
-      <p className="mb-1 text-sm">📍 {location}</p>
-      <p className="mb-2 text-sm">💰 {salary}</p>
+      <div className="flexCenter mb-1 justify-start text-sm">
+        <div className="flexCenter mr-3 w-5">
+          <InlineSvg src={"/icons/location.svg"} className={clsx(textColor)} />
+        </div>
+
+        {location}
+      </div>
+      <div className="flexCenter mb-2 justify-start text-sm">
+        <div className="flexCenter mr-3 w-5">
+          <InlineSvg src={"/icons/salary.svg"} className={clsx(textColor)} />
+        </div>
+
+        {salary}
+      </div>
       <p className="mb-4 text-sm">{description}</p>
       <Button
         textColor={"text-light-blue"}

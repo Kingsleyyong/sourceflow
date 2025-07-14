@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <div className="bg-white text-black">
       {/* Hero Section */}
-      <section className="bg-light-blue h-[42rem] py-10 text-white">
-        <div className="flexCenter container mx-auto h-full flex-col gap-16 px-7 md:flex-row">
+      <section className="bg-light-blue relative h-[42rem] py-10 text-white">
+        <div className="flexCenter relative z-10 container mx-auto h-full flex-col gap-16 px-7 md:flex-row">
           <div>
             <h6 className={"mb-2.5 text-sm font-normal"}>
               Software Recruitment Specialists
@@ -25,6 +25,15 @@ export default function Home() {
             <img src="/images/hero-woman.png" alt="Hero Illustration" />
           </div>
         </div>
+
+        <img
+          src={"/icons/left-circle.svg"}
+          className={"absolute top-0 left-0 z-0 w-[10rem]"}
+        />
+        <img
+          src={"/icons/right-circle.svg"}
+          className={"absolute right-0 bottom-0 z-0 w-[13rem]"}
+        />
       </section>
 
       {/* Logos Section */}
@@ -41,9 +50,9 @@ export default function Home() {
 
       {/* Latest Jobs Section */}
       <section className="bg-lighter-blue py-16">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-10">
           <SectionTitle title="Latest Jobs" />
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {jobList.map((job) => (
               <JobCard key={job.id} {...job} />
             ))}
