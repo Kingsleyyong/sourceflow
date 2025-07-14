@@ -1,5 +1,7 @@
+import { Icons } from "@/constants/imageLists";
 import { NavListItems } from "@/constants/navBarConstant";
 import { NavBarItem, NavBarTypes } from "@/types/navBar";
+import clsx from "clsx";
 import Image from "next/image";
 
 function NavBar() {
@@ -8,20 +10,28 @@ function NavBar() {
     ({ types }) => types,
   );
   return (
-    <div className={"flex w-full justify-around"}>
-      {typesGroupingNavListItems.keys().map((key) => {
+    <div className={`flex h-24 w-full justify-around py-7`}>
+      {[...typesGroupingNavListItems.keys()].map((key) => {
         const currentItem =
           typesGroupingNavListItems.get(key) ?? ({} as NavBarTypes[]);
 
         return (
-          <div key={NavBarItem[key]} className={"flex justify-between"}>
+          <div
+            key={NavBarItem[key]}
+            className={
+              "flexCenter " +
+              (key === NavBarItem.PAGES ? "-m-20 w-1/2 justify-start" : "")
+            }
+          >
             {currentItem.map((item) =>
               key === NavBarItem.LOGO ? (
                 <div
-                  key={`${key + 1}. ${item.text}`}
-                  className={
-                    "flexCenter text-xl text-[20px] leading-[100%] font-bold tracking-[0%]"
-                  }
+                  key={`${key + 1}. ${item.text} flexCenter`}
+                  className={clsx(
+                    "flexCenter text-xl font-bold",
+                    item.textColor,
+                    item.bgColor,
+                  )}
                 >
                   {item.image ? (
                     <Image src={item.image} alt="Logo" />
@@ -30,12 +40,30 @@ function NavBar() {
                   )}
                 </div>
               ) : key === NavBarItem.PAGES ? (
-                <div key={`${key + 1}. ${item.text}`} className={"flexCenter"}>
-                  {item.text}{" "}
-                  <Image src={""} alt="Dropdown Icon" width={10} height={10} />
+                <div
+                  key={`${key + 1}. ${item.text}`}
+                  className={"flexCenter mr-6"}
+                >
+                  {item.text}
+                  <Image
+                    className={"ml-3"}
+                    src={Icons.DropdownIcon}
+                    alt="Dropdown Icon"
+                    width={10}
+                    height={10}
+                  />
                 </div>
               ) : key === NavBarItem.BUTTON ? (
-                <button key={`${key + 1}. ${item.text}`}>{item.text}</button>
+                <button
+                  key={`${key + 1}. ${item.text}`}
+                  className={clsx(
+                    "mx-1 rounded-[30px] px-5 py-3",
+                    item.textColor,
+                    item.bgColor,
+                  )}
+                >
+                  {item.text}
+                </button>
               ) : (
                 <></>
               ),

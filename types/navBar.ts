@@ -12,4 +12,6 @@ export type NavBarTypes = {
   text: string;
   image?: string;
   dropdowns?: string[] | JSX.Element;
+  textColor?: string;
+  bgColor?: string;
 };
