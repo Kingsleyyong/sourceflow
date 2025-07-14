@@ -3,7 +3,6 @@ import SearchInput from "@/components/ui/SearchInput";
 import JobCard from "@/components/ui/JobCard";
 import { jobList } from "@/constants/jobLists";
 import { logoList } from "@/constants/logoLists";
-import Image from "next/image";
 import InlineSvg from "@/components/ui/InlineSvg";
 import Button from "@/components/ui/Button";
 import Link from "next/link";

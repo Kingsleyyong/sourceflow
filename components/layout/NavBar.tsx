@@ -4,6 +4,7 @@ import { NavListItems } from "@/constants/navBarConstant";
 import { NavBarItem, NavBarTypes } from "@/types/navBar";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavBar = () => {
   const typesGroupingNavListItems = Map.groupBy(
@@ -12,7 +13,9 @@ const NavBar = () => {
   );
 
   return (
-    <div className={`flex h-24 w-full justify-around py-7`}>
+    <div
+      className={`bg-background text-foreground flex h-24 w-full justify-around py-7`}
+    >
       {[...typesGroupingNavListItems.keys()].map((key) => {
         const currentItem =
           typesGroupingNavListItems.get(key) ?? ({} as NavBarTypes[]);
@@ -27,7 +30,8 @@ const NavBar = () => {
           >
             {currentItem.map((item) =>
               key === NavBarItem.LOGO ? (
-                <div
+                <Link
+                  href={"/"}
                   key={`${key + 1}. ${item.text} flexCenter`}
                   className={clsx(
                     "flexCenter text-xl font-bold",
@@ -40,21 +44,24 @@ const NavBar = () => {
                   ) : (
                     <span>{item.text}</span>
                   )}
-                </div>
+                </Link>
               ) : key === NavBarItem.PAGES ? (
-                <div
+                <Link
                   key={`${key + 1}. ${item.text}`}
-                  className={"flexCenter mr-6"}
+                  className={
+                    "flexCenter hover:text-dark-blue mr-6 hover:font-medium"
+                  }
+                  href={`${item.directRoute}`}
                 >
                   {item.text}
                   <Image
-                    className={"ml-3"}
+                    className={"ml-2"}
                     src={Icons.DropdownIcon}
                     alt="Dropdown Icon"
                     width={10}
                     height={10}
                   />
-                </div>
+                </Link>
               ) : key === NavBarItem.BUTTON ? (
                 <Button
                   key={`${key + 1}. ${item.text}`}
