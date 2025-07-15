@@ -1,11 +1,8 @@
 import SectionTitle from "@/components/ui/SectionTitle";
 import SearchInput from "@/components/ui/SearchInput";
-import JobCard from "@/components/ui/JobCard";
 import { jobList } from "@/constants/jobLists";
 import { logoList } from "@/constants/logoLists";
-import InlineSvg from "@/components/ui/InlineSvg";
-import Button from "@/components/ui/Button";
-import Link from "next/link";
+import PaginatedJobList from "@/components/ui/PaginationJobList";
 
 export default function Home() {
   return (
@@ -54,36 +51,7 @@ export default function Home() {
       <section className="bg-lighter-blue py-16">
         <div className="container mx-auto px-10">
           <SectionTitle title="Latest Jobs" />
-          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-10">
-            {jobList.map((job) => (
-              <JobCard key={job.id} {...job} />
-            ))}
-          </div>
-
-          <div className={"flexCenter mt-5 md:justify-between"}>
-            <div className="hidden md:block">
-              <Button className="m-2.5" disabled>
-                <InlineSvg
-                  src={"/icons/prev-button.svg"}
-                  className={"text-light-blue"}
-                />
-              </Button>
-
-              <Button className="m-2.5">
-                <InlineSvg
-                  src={"/icons/next-button.svg"}
-                  className={"text-light-blue"}
-                />
-              </Button>
-            </div>
-
-            <Link
-              href={"#"}
-              className="leading-[150%} m-2.5 text-sm font-medium hover:underline"
-            >
-              View more jobs
-            </Link>
-          </div>
+          <PaginatedJobList jobList={jobList} />
         </div>
       </section>
     </div>

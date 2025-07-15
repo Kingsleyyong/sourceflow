@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
         textColor,
         radius,
         disabled && "cursor-not-allowed opacity-50",
-        !disabled && "cursor-pointer hover:grayscale-50",
+        !disabled && "cursor-pointer hover:grayscale-20 active:opacity-80",
       )}
       {...props}
     >
