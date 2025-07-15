@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import JobCard from "@/components/ui/JobCard";
-import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
 import InlineSvg from "@/components/ui/InlineSvg";
 import Link from "next/link";
@@ -14,8 +14,21 @@ interface IPaginationJobList {
   jobList: Job[];
 }
 
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "100%" : "-100%",
+  }),
+  center: {
+    x: 0,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? "100%" : "-100%",
+  }),
+};
+
 const PaginatedJobList = ({ jobList }: IPaginationJobList) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [direction, setDirection] = useState(0);
 
   const totalPages = Math.ceil(jobList.length / JOBS_PER_PAGE);
 
@@ -25,19 +38,38 @@ const PaginatedJobList = ({ jobList }: IPaginationJobList) => {
   );
 
   const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+    if (currentPage < totalPages) {
+      setDirection(1);
+      setCurrentPage((prev) => prev + 1);
+    }
   };
 
   const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+    if (currentPage > 1) {
+      setDirection(-1);
+      setCurrentPage((prev) => prev - 1);
+    }
   };
 
   return (
-    <div>
-      <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-10">
-        {paginatedJobs.map((job) => (
-          <JobCard key={job.id} {...job} />
-        ))}
+    <div className="relative overflow-hidden">
+      <div className="relative min-h-[300px]">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={currentPage}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ type: "tween", duration: 0.4 }}
+            className="absolute grid w-full grid-cols-1 gap-3 md:grid-cols-3 md:gap-10"
+          >
+            {paginatedJobs.map((job) => (
+              <JobCard key={job.id} {...job} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="flexCenter mt-5 md:justify-between">
