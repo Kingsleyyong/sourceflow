@@ -22,12 +22,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="text-dark-grey bg-background grow rounded-l-full px-4 py-3 font-extrabold focus:outline-none"
+        className="text-foreground bg-background placeholder:text-dark-grey grow rounded-l-full px-4 py-3 font-extrabold focus:outline-none"
       />
 
       <button
         onClick={handleSearch}
-        className="bg-yellow cursor-pointer rounded-r-full px-6 py-3 text-lg font-semibold text-black"
+        className="bg-yellow cursor-pointer rounded-r-full px-6 py-3 text-lg font-semibold text-black hover:grayscale-20 active:opacity-80"
       >
         Search jobs
       </button>
