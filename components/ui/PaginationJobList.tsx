@@ -63,7 +63,7 @@ const PaginatedJobList = ({ jobList }: IPaginationJobList) => {
             animate="center"
             exit="exit"
             transition={{ type: "tween", duration: 0.4 }}
-            className="absolute grid w-full grid-cols-1 gap-3 md:grid-cols-3 md:gap-10"
+            className="grid w-full grid-cols-1 gap-3 md:grid-cols-3 md:gap-10"
           >
             {paginatedJobs.map((job) => (
               <JobCard key={job.id} {...job} />
