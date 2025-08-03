@@ -1,6 +1,7 @@
 export const Images = {};
 export const Icons = {
   DropdownIcon: "/icons/dropdown-icon.svg",
+  HamburgerMenu: "/icons/hamburger.svg",
   FacebookIcon: "/icons/ic_baseline-facebook.svg",
   LinkedInIcon: "/icons/fa-brands_linkedin-in.svg",
   TwitterIcon: "/icons/mdi_twitter.svg",

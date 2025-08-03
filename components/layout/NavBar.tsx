@@ -87,7 +87,7 @@ const NavBar = () => {
 
       {/* Mobile Nav */}
       <div className="flex w-full flex-col xl:hidden">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between">
           {[...(typesGroupingNavListItems.get(NavBarItem.LOGO) || [])].map(
             (item) => (
               <Link
@@ -110,9 +110,15 @@ const NavBar = () => {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-sm font-medium"
+            className="font-medium"
           >
-            Menu
+            <Image
+              className={"ml-2"}
+              src={Icons.HamburgerMenu}
+              alt="Dropdown Icon"
+              width={20}
+              height={20}
+            />
           </button>
         </div>
 
